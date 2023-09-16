@@ -6,6 +6,7 @@ use App\Models\Trainee;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class TraineeController extends Controller
 {
@@ -43,11 +44,13 @@ class TraineeController extends Controller
             'full_name' => ['required'],
             'certificate_image' => ['required']
         ]);
+        $data['slug'] = Str::orderedUuid();
         $file = request()->file('certificate_image');
         if($file) {
             $data['certificate_image'] = uniqid().'_'.trim($file->getClientOriginalName());
             $file->storeAs('certificates/', $data['certificate_image'], 'public');
         }
+       
         Trainee::create($data);
 
         return Redirect::route('trainee.index');
