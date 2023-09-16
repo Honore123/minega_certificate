@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('https://mineganetworks.rw/');
 });
 
 Route::get('/dashboard', function () {
