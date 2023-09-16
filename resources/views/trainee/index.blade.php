@@ -28,6 +28,9 @@
                    Names
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Certificate ID
+                 </th>
+                <th scope="col" class="px-6 py-3">
                     Action
                 </th>
             </tr>
@@ -35,14 +38,17 @@
         <tbody>
             @forelse($trainees as $trainee)
             <tr class="bg-white border-b">
-                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+                <td class="px-6 py-4">
                    {{$loop->iteration++}}
-                </th>
+                </td>
                 <td class="px-6 py-4">
                   {{$trainee->full_name}}
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 hover:underline">Download</a>
+                    {{$trainee->slug}}
+                </td>
+                <td class="px-6 py-4">
+                    <a href="{{asset('storage/certificates/'.$trainee->certificate_image)}}" class="font-medium text-blue-600 hover:underline">View</a>
                 </td>
             </tr>
            @empty
