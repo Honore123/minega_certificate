@@ -1,0 +1,1 @@
+## Minega Certificate
